@@ -22,6 +22,8 @@ body {
 }
 
 main {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 400px;
   text-align: center;
@@ -89,3 +91,65 @@ main {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== Cenas de fundo (uma por link) ===== */
+.scenes { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+.scene { position: absolute; inset: 0; opacity: .22; transition: opacity .5s ease; }
+body[data-active] .scene { opacity: .07; }
+body[data-active="site"]     .scene[data-scene="site"],
+body[data-active="robot"]    .scene[data-scene="robot"],
+body[data-active="excel"]    .scene[data-scene="excel"],
+body[data-active="business"] .scene[data-scene="business"] { opacity: .95; }
+
+.scene svg { position: absolute; overflow: visible; fill: none; stroke: #fff; stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round; }
+.scene .fill { fill: #fff; }
+.scene .soft { fill: rgba(255,255,255,.35); }
+.scene .grid { stroke-dasharray: 3 6; opacity: .6; }
+
+/* SITE */
+.s-site { width: clamp(150px, 20vw, 260px); right: 6vw; top: 8vh; transform: rotate(6deg); animation: float 7s ease-in-out infinite; }
+.gem { fill: rgba(255,255,255,.25); animation: pulse 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.draw { stroke-dasharray: 300; animation: type 4s ease-in-out infinite; }
+
+/* ROBÔ */
+.ground { position: absolute; left: 0; right: 0; bottom: 5vh; height: 3px;
+  background: repeating-linear-gradient(90deg, #fff 0 18px, transparent 18px 34px);
+  background-size: 34px 3px; animation: ground 1s linear infinite; }
+.walker { position: absolute; bottom: calc(5vh + 3px); left: 0; animation: walk 16s linear infinite; }
+.scene .robot { position: static; display: block; width: clamp(60px, 8vw, 96px); }
+.bob { animation: bob .5s ease-in-out infinite; }
+.leg, .arm { transform-box: fill-box; transform-origin: top center; }
+.l1, .a2 { animation: swing .5s ease-in-out infinite alternate; }
+.l2, .a1 { animation: swing .5s ease-in-out infinite alternate-reverse; }
+.eye { animation: blinkeye 4s infinite; transform-box: fill-box; transform-origin: center; }
+
+/* EXCEL */
+.s-grid { width: clamp(150px, 19vw, 250px); left: 5vw; top: 9vh; transform: rotate(-5deg); animation: float 8s ease-in-out infinite; }
+.blink { animation: pulse 2.4s ease-in-out infinite; }
+.b2 { animation-delay: 1.2s; }
+.s-bars { width: clamp(120px, 15vw, 190px); left: 9vw; bottom: 16vh; }
+.bar { fill: #fff; stroke: none; transform-box: fill-box; transform-origin: bottom center; animation: grow 3s ease-in-out var(--d) infinite; }
+.s-pie { width: clamp(70px, 9vw, 110px); left: 24vw; bottom: 30vh; transform: rotate(-90deg); }
+.slice { stroke-width: 16; stroke-dasharray: 38 100; animation: spin 6s linear infinite; transform-origin: 50px 50px; }
+.s-pie circle:first-child { stroke-width: 16; opacity: .4; }
+
+/* BUSINESS */
+.s-line { width: clamp(180px, 25vw, 330px); right: 5vw; bottom: 14vh; }
+.trend { stroke-width: 4; stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 4s ease-in-out infinite; }
+.arrow { stroke-width: 4; animation: pulse 4s ease-in-out infinite; }
+.dot { fill: #fff; animation: pulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.s-candles { width: clamp(100px, 12vw, 150px); right: 28vw; top: 14vh; }
+.cd { animation: float 3s ease-in-out var(--d) infinite; }
+
+@keyframes float  { 50% { translate: 0 -12px; } }
+@keyframes pulse  { 50% { opacity: .35; scale: 1.08; } }
+@keyframes type   { 0%,10% { stroke-dashoffset: 300; } 50%,90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -300; } }
+@keyframes walk   { from { translate: -120px 0; } to { translate: calc(100vw + 20px) 0; } }
+@keyframes ground { to { background-position: -34px 0; } }
+@keyframes bob    { 50% { translate: 0 -3px; } }
+@keyframes swing  { from { rotate: -28deg; } to { rotate: 28deg; } }
+@keyframes blinkeye { 94%,100% { scale: 1 1; } 97% { scale: 1 .1; } }
+@keyframes grow   { 0%,100% { scale: 1 .35; } 50% { scale: 1 1; } }
+@keyframes spin   { to { rotate: 360deg; } }
+@keyframes draw   { 0% { stroke-dashoffset: 100; } 60%,90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
