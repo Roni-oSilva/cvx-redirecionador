@@ -5,8 +5,8 @@
 const config = {
   // Caminho da logo (PNG, JPG ou SVG). Basta trocar o arquivo
   // em assets/ ou mudar o caminho abaixo.
-  logo: "assets/logo.svg",
-  logoAlt: "Carvex",
+  logo: "assets/logo.png",
+  logoAlt: "Carvex Technology",
 
   // Frase abaixo da logo
   tagline: "Tudo o que você precisa, em um só lugar.",
