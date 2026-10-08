@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carvex</title>
+  <meta name="description" content="Tudo o que você precisa, em um só lugar.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <img id="logo" class="logo" alt="">
+    <p id="tagline" class="tagline"></p>
+    <ul id="links" class="links"></ul>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+    document.title = config.title;
+
+    const logo = document.getElementById("logo");
+    logo.src = config.logo;
+    logo.alt = config.logoAlt;
+
+    document.getElementById("tagline").textContent = config.tagline;
+
+    const list = document.getElementById("links");
+    links.forEach((link, i) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.textContent = link.name;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.style.setProperty("--i", i);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

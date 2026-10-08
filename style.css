@@ -1,0 +1,110 @@
+:root {
+  --bg: #f6f7f9;
+  --text: #111827;
+  --muted: #6b7280;
+  --btn-bg: #ffffff;
+  --btn-border: #e5e7eb;
+  --accent: #111827;
+  --accent-text: #ffffff;
+  --shadow: 0 1px 2px rgba(17, 24, 39, .06);
+  --shadow-hover: 0 10px 24px rgba(17, 24, 39, .14);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0d12;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --btn-bg: #151922;
+    --btn-border: #252b38;
+    --accent: #f3f4f6;
+    --accent-text: #0b0d12;
+    --shadow: none;
+    --shadow-hover: 0 10px 28px rgba(0, 0, 0, .5);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: enter .6s ease both;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 24px;
+  max-width: 120px;
+  max-height: 96px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: .01em;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 0 24px;
+  border-radius: 14px;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease,
+              color .2s ease, border-color .2s ease;
+  animation: enter .5s ease both;
+  animation-delay: calc(var(--i) * 70ms + 150ms);
+}
+
+.links a:hover,
+.links a:focus-visible {
+  transform: translateY(-3px);
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+  outline: none;
+}
+.links a:active { transform: translateY(-1px) scale(.99); }
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
