@@ -1,6 +1,6 @@
 :root {
-  --blue: #0059df;
-  --blue-light: #1a76ff;
+  --blue: #0040e8;
+  --blue-light: #1f7bff;
   --white: #ffffff;
   --glass: rgba(255, 255, 255, .12);
   --glass-border: rgba(255, 255, 255, .28);
@@ -16,7 +16,10 @@ body {
   justify-content: center;
   padding: 56px 20px;
   color: var(--white);
-  background: radial-gradient(ellipse at 50% 35%, var(--blue-light) 0%, var(--blue) 65%) fixed;
+  background: linear-gradient(135deg, #0033c9, #0050ff 45%, #0a3fe0 70%, #002fb8) fixed;
+  background-size: 200% 200%;
+  animation: bgshift 14s ease-in-out infinite alternate;
+  overflow-x: hidden;
   font-family: "Inter Tight", "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -94,8 +97,8 @@ main {
 
 /* ===== Cenas de fundo (uma por link) ===== */
 .scenes { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
-.scene { position: absolute; inset: 0; opacity: .22; transition: opacity .5s ease; }
-body[data-active] .scene { opacity: .07; }
+.scene { position: absolute; inset: 0; opacity: .38; transition: opacity .5s ease; }
+body[data-active] .scene { opacity: .1; }
 body[data-active="site"]     .scene[data-scene="site"],
 body[data-active="robot"]    .scene[data-scene="robot"],
 body[data-active="excel"]    .scene[data-scene="excel"],
@@ -116,7 +119,7 @@ body[data-active="business"] .scene[data-scene="business"] { opacity: .95; }
 .ground { position: absolute; left: 0; right: 0; bottom: 5vh; height: 3px;
   background: repeating-linear-gradient(90deg, #fff 0 18px, transparent 18px 34px);
   background-size: 34px 3px; animation: ground 1s linear infinite; }
-.walker { position: absolute; bottom: calc(5vh + 3px); left: 0; animation: walk 16s linear infinite; }
+.walker { position: absolute; bottom: calc(5vh + 3px); left: 0; animation: walk 11s linear infinite; }
 .scene .robot { position: static; display: block; width: clamp(60px, 8vw, 96px); }
 .bob { animation: bob .5s ease-in-out infinite; }
 .leg, .arm { transform-box: fill-box; transform-origin: top center; }
@@ -153,3 +156,38 @@ body[data-active="business"] .scene[data-scene="business"] { opacity: .95; }
 @keyframes grow   { 0%,100% { scale: 1 .35; } 50% { scale: 1 1; } }
 @keyframes spin   { to { rotate: 360deg; } }
 @keyframes draw   { 0% { stroke-dashoffset: 100; } 60%,90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+
+/* ===== Mais movimento ===== */
+body::before, body::after { content: ""; position: fixed; z-index: 0; border-radius: 50%;
+  filter: blur(70px); pointer-events: none; }
+body::before { width: 60vmax; height: 60vmax; left: -20vmax; top: -15vmax;
+  background: radial-gradient(circle, rgba(60,150,255,.75), transparent 65%); animation: drift1 12s ease-in-out infinite alternate; }
+body::after { width: 55vmax; height: 55vmax; right: -18vmax; bottom: -20vmax;
+  background: radial-gradient(circle, rgba(0,200,255,.45), transparent 65%); animation: drift2 15s ease-in-out infinite alternate; }
+.scenes { z-index: 0; }
+
+.bubble { position: absolute; bottom: -20px; border-radius: 50%; background: rgba(255,255,255,.35);
+  animation: rise linear infinite; }
+
+.logo { animation: logofloat 5s ease-in-out infinite; filter: drop-shadow(0 8px 24px rgba(0,20,120,.45)); }
+
+.links a { position: relative; overflow: hidden; }
+.links a::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+  transform: skewX(-20deg); animation: shine 4.5s ease-in-out infinite; animation-delay: calc(var(--i) * .6s + 1s); }
+.links a:hover::after { animation-duration: 1.2s; }
+
+.s-site { animation-duration: 5s; }
+.s-grid { animation-duration: 5.5s; }
+.s-bars, .s-pie, .s-line, .s-candles { animation: float 4.5s ease-in-out infinite; }
+.s-pie { animation: none; }
+.slice { animation-duration: 3s; }
+.trend { animation-duration: 2.8s; }
+.bar { animation-duration: 1.8s; animation-delay: var(--d); }
+
+@keyframes bgshift { to { background-position: 100% 100%; } }
+@keyframes drift1 { to { translate: 25vw 18vh; scale: 1.2; } }
+@keyframes drift2 { to { translate: -22vw -15vh; scale: 1.25; } }
+@keyframes rise { to { translate: var(--dx, 0px) -110vh; opacity: 0; } }
+@keyframes logofloat { 50% { translate: 0 -8px; } }
+@keyframes shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
