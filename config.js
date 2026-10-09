@@ -13,6 +13,14 @@ const config = {
 
   // Título da aba do navegador
   title: "Carvex",
+
+  // Redes sociais (aparecem como ícone + @ abaixo dos botões)
+  social: [
+    { type: "instagram", handle: "@carvexlab", url: "https://instagram.com/carvexlab" },
+  ],
+
+  // Direitos autorais (o ano é atualizado automaticamente)
+  copyright: "Carvex Technology. Todos os direitos reservados.",
 };
 
 // Para adicionar um link, copie uma linha e cole abaixo.

@@ -100,6 +100,8 @@
     <img id="logo" class="logo" alt="">
     <p id="tagline" class="tagline"></p>
     <ul id="links" class="links"></ul>
+    <div id="social" class="social"></div>
+    <footer id="copyright" class="copyright"></footer>
   </main>
 
   <script src="config.js"></script>
@@ -122,6 +124,23 @@
     logo.alt = config.logoAlt;
 
     document.getElementById("tagline").textContent = config.tagline;
+
+    const icons = {
+      instagram: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+    };
+    const social = document.getElementById("social");
+    config.social.forEach((s) => {
+      const a = document.createElement("a");
+      a.href = s.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", s.type);
+      a.innerHTML = (icons[s.type] || "") + "<span></span>";
+      a.querySelector("span").textContent = s.handle;
+      social.appendChild(a);
+    });
+    document.getElementById("copyright").textContent =
+      "© " + new Date().getFullYear() + " " + config.copyright;
 
     const list = document.getElementById("links");
     links.forEach((link, i) => {
