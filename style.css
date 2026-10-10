@@ -200,3 +200,67 @@ body::after { width: 55vmax; height: 55vmax; right: -18vmax; bottom: -20vmax;
   transition: transform .2s ease, background .2s ease, color .2s ease; }
 .social a:hover, .social a:focus-visible { transform: translateY(-2px); background: #fff; color: var(--blue); outline: none; }
 .copyright { margin-top: 28px; font-size: .78rem; letter-spacing: .02em; color: rgba(255,255,255,.65); }
+
+/* ===== Tema escuro: cards flutuantes (inspirado em UI de realidade virtual) ===== */
+:root { --blue: #0a1f6b; --glass-border: rgba(140, 180, 255, .35); }
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #10277f 0%, #07123f 45%, #030820 100%) fixed;
+  animation: none;
+}
+body::before { background: radial-gradient(circle, rgba(70,90,255,.55), transparent 65%); }
+body::after  { background: radial-gradient(circle, rgba(140,60,255,.4), transparent 65%); }
+.scene { opacity: .28; }
+body[data-active] .scene { opacity: .08; }
+.tagline { color: rgba(210, 225, 255, .85); }
+.main-cards { perspective: 900px; }
+
+.links { gap: 18px; perspective: 900px; }
+.links li { animation: cardfloat 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -1s); }
+.links li:nth-child(odd)  { --tilt: -2.5deg; }
+.links li:nth-child(even) { --tilt: 2.5deg; }
+
+.links a {
+  min-height: 76px;
+  border-radius: 24px;
+  border: 1.5px solid color-mix(in srgb, var(--c1) 70%, #fff 30%);
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--c1) 38%, #050b28),
+    color-mix(in srgb, var(--c2) 62%, #050b28));
+  box-shadow: 0 0 22px color-mix(in srgb, var(--c1) 55%, transparent),
+              inset 0 0 18px rgba(255, 255, 255, .08);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  font-size: 1.2rem;
+  transform: rotateY(var(--tilt, 0deg));
+}
+.links a:hover, .links a:focus-visible {
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--c1) 60%, #050b28),
+    color-mix(in srgb, var(--c2) 80%, #050b28));
+  color: #fff;
+  transform: translateY(-5px) rotateY(0deg) scale(1.03);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--c1) 85%, transparent),
+              0 18px 40px rgba(0, 0, 0, .5),
+              inset 0 0 22px rgba(255, 255, 255, .15);
+}
+.social a:hover, .social a:focus-visible { color: #0a1f6b; }
+
+/* Orbes de vidro com ícones */
+.orb { position: absolute; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, rgba(160,190,255,.45), rgba(40,70,200,.35) 60%, rgba(10,20,90,.5));
+  border: 1.5px solid rgba(160, 190, 255, .35); box-shadow: 0 0 40px rgba(60, 100, 255, .45);
+  animation: float 6s ease-in-out infinite; }
+.orb svg { width: 46%; height: 46%; fill: rgba(235, 242, 255, .85); }
+.o1 { width: clamp(90px, 13vw, 170px); height: clamp(90px, 13vw, 170px); right: 3vw; top: -3vh; filter: blur(2px); }
+.o2 { width: clamp(70px, 9vw, 120px); height: clamp(70px, 9vw, 120px); left: 4vw; top: 42vh; animation-delay: -2s; }
+.o3 { width: clamp(100px, 14vw, 190px); height: clamp(100px, 14vw, 190px); right: 2vw; bottom: -5vh; filter: blur(3px); animation-delay: -4s; }
+
+@keyframes cardfloat { 50% { translate: 0 -8px; } }
+
+html { background: #030820; }
+body { padding-top: 36px; padding-bottom: 36px; }
+.links { gap: 14px; }
+.links a { min-height: 68px; }
+.tagline { margin-bottom: 32px; }
+.social { margin-top: 28px; }
+.copyright { margin-top: 18px; position: relative; }

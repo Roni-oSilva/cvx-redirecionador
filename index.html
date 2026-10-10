@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carvex</title>
   <meta name="description" content="Tudo o que você precisa, em um só lugar.">
-  <meta name="theme-color" content="#0059df">
+  <meta name="theme-color" content="#050d2e">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&display=swap" rel="stylesheet">
@@ -19,6 +19,9 @@
 <body>
   <div class="scenes" aria-hidden="true">
     <div id="bubbles"></div>
+    <div class="orb o1"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.5 3 5 6.4 5c2 0 3.6 1.1 5.6 3.2C14 6.100 15.600 5 17.600 5 21 5 23 8.500 21.600 11.800 19.500 16.400 12 21 12 21z"/></svg></div>
+    <div class="orb o2"><svg viewBox="0 0 24 24"><path d="M7 11v9H4v-9h3zm2 9V11l4-8c1.700 0 2.500 1.300 2.100 2.800L14.600 9H20c1.100 0 1.900 1 1.700 2.100l-1.300 7c-.2 1-1 1.900-2.100 1.900H9z"/></svg></div>
+    <div class="orb o3"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.5 3 5 6.4 5c2 0 3.6 1.1 5.6 3.2C14 6.100 15.600 5 17.600 5 21 5 23 8.500 21.600 11.800 19.500 16.400 12 21 12 21z"/></svg></div>
     <!-- SITE: janela de navegador + diamantes -->
     <div class="scene" data-scene="site">
       <svg class="s-site" viewBox="0 0 220 160">
@@ -142,6 +145,15 @@
     document.getElementById("copyright").textContent =
       "© " + new Date().getFullYear() + " " + config.copyright;
 
+    // Cores dos cards (uma por posição, repete se houver mais links)
+    const palette = [
+      ["#2d6bff", "#5b2dff"],
+      ["#8a4dff", "#3b1fa8"],
+      ["#12d6a8", "#0a6b72"],
+      ["#2d9bff", "#1a3fd0"],
+      ["#6a5cff", "#0d1f8f"],
+    ];
+
     const list = document.getElementById("links");
     links.forEach((link, i) => {
       const li = document.createElement("li");
@@ -151,6 +163,9 @@
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.style.setProperty("--i", i);
+      const [c1, c2] = palette[i % palette.length];
+      a.style.setProperty("--c1", c1);
+      a.style.setProperty("--c2", c2);
       if (link.scene) {
         const on = () => (document.body.dataset.active = link.scene);
         const off = () => delete document.body.dataset.active;
