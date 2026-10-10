@@ -16,7 +16,7 @@ const config = {
 
   // Redes sociais (aparecem como ícone + @ abaixo dos botões)
   social: [
-    { type: "instagram", handle: "@carvexlab", url: "https://instagram.com/carvexlab" },
+    { type: "instagram", handle: "@carvex_lab", url: "https://www.instagram.com/carvex_lab?dlrf=ZWd1azM2cnc4cDVx" },
   ],
 
   // Direitos autorais (o ano é atualizado automaticamente)
@@ -31,4 +31,5 @@ const links = [
   { name: "Robôs",        url: "https://robos-carvex.vercel.app/", scene: "robot" },
   { name: "Excels",       url: "https://carvex-excels.vercel.app/", scene: "excel" },
   { name: "Business",     url: "https://carvex-bussines.vercel.app", scene: "business" },
+  { name: "Hotmart",      url: "https://hotmart-cvx.vercel.app/", scene: "business" },
 ];
