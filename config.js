@@ -31,5 +31,5 @@ const links = [
   { name: "Robôs",        url: "https://robos-carvex.vercel.app/", scene: "robot" },
   { name: "Excels",       url: "https://carvex-excels.vercel.app/", scene: "excel" },
   { name: "Business",     url: "https://carvex-bussines.vercel.app", scene: "business" },
-  { name: "Hotmart",      url: "https://hotmart-cvx.vercel.app/", scene: "business" },
+  { name: "Hotmart",      url: "https://hotmart.com/pt-br/club/ronilson-silva-e-silva", scene: "business" },
 ];
