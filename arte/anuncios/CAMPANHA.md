@@ -136,7 +136,7 @@ O criativo **Kits** funciona melhor quando o público é de um segmento só. Cri
 
 # Site Oficial, Excels e Hotmart
 
-Cada criativo vem em 1:1, 4:5 e 9:16, com o mesmo padrão: `oficial-…`, `excels-…`, `hotmart-…` (por exemplo `excels-feed-4x5.png`). O Site Oficial usa o laranja do site novo, o Excels usa o verde e o Hotmart usa o azul da Carvex.
+Cada criativo vem em 1:1, 4:5 e 9:16, com o mesmo padrão: `oficial-…`, `excels-…`, `hotmart-…` (por exemplo `excels-feed-4x5.png`). O Site Oficial usa o dourado do site novo, o Excels usa o verde e o Hotmart usa o azul da Carvex.
 
 ## Site Oficial — "Tecnologia que trabalha por você."
 - **Destino:** `https://carvex-one.vercel.app/?utm_source=meta&utm_medium=paid&utm_campaign=oficial`
