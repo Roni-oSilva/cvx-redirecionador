@@ -96,3 +96,38 @@ O que importa de verdade é o custo por contrato fechado, não o custo do clique
 ## Para mudar os textos ou gerar de novo
 
 Edite `anuncio.html` (os textos ficam no topo do script) e peça a Claude para regenerar as imagens.
+
+---
+
+# Carvex Business (kits por tipo de negócio)
+
+Destino: `https://carvex-bussines.vercel.app/` (site Business), com o WhatsApp como segundo passo.
+
+| Ângulo | Quadrado 1:1 | Feed 4:5 | Stories / Reels 9:16 |
+|---|---|---|---|
+| **Problema** — "Você apresenta o problema. A Carvex monta a solução." (iceberg) | `business-problema-quadrado-1x1.png` | `business-problema-feed-4x5.png` | `business-problema-stories-9x16.png` |
+| **Kits** — "Um kit completo para o seu negócio." (10 segmentos, 8 aparecem) | `business-kits-quadrado-1x1.png` | `business-kits-feed-4x5.png` | `business-kits-stories-9x16.png` |
+
+## Textos
+
+### Problema
+- **Texto principal:** Dados soltos, processo lento, custo alto, relatório que nunca fica pronto. Você apresenta o problema e a Carvex monta a solução com um kit de ferramentas e automações para o seu negócio. Veja qual kit combina com você.
+- **Título:** Sua empresa tem um problema
+- **Descrição:** A Carvex monta a solução
+- **Botão:** Saiba mais (destino: site) ou Enviar mensagem (destino: WhatsApp)
+
+### Kits
+- **Texto principal:** Restaurante, clínica, loja, salão, oficina, academia, imobiliária, escritório. Cada negócio tem seus gargalos, e a Carvex monta um kit completo para organizar, controlar e automatizar o seu. Escolha o seu e fale com a gente.
+- **Título:** Um kit para o seu tipo de negócio
+- **Descrição:** Ferramentas, automações e soluções
+- **Botão:** Saiba mais (site) ou Enviar mensagem (WhatsApp)
+
+## Links
+
+Site (com rastreio): `https://carvex-bussines.vercel.app/?utm_source=meta&utm_medium=paid&utm_campaign=business-problema` (troque o final por `business-kits` no outro anúncio).
+
+WhatsApp: https://wa.me/5591981902529?text=Ol%C3%A1%2C%20Carvex!%20Vi%20o%20an%C3%BAncio%20do%20Carvex%20Business%20e%20quero%20ver%20o%20kit%20para%20o%20meu%20neg%C3%B3cio.
+
+## Dica de segmentação
+
+O criativo **Kits** funciona melhor quando o público é de um segmento só. Crie um conjunto de anúncios por tipo de negócio (por exemplo, só interesses de restaurante) e troque o título por "Um kit para o seu restaurante". Fica mais específico e tende a converter melhor.
