@@ -26,8 +26,9 @@ const config = {
 // Para adicionar um link, copie uma linha e cole abaixo.
 // "scene" escolhe a ilustração de fundo que destaca ao passar o mouse:
 //   "site" | "robot" | "excel" | "business"   (opcional)
+// "color" troca as duas cores do botão: ["cor clara", "cor escura"]   (opcional)
 const links = [
-  { name: "Site Oficial", url: "https://carvex-one.vercel.app/", scene: "site" },
+  { name: "Site Oficial", url: "https://carvex-one.vercel.app/", scene: "site", color: ["#f0b90b", "#b07a00"] },
   { name: "Robôs",        url: "https://robos-carvex.vercel.app/", scene: "robot" },
   { name: "Excels",       url: "https://carvex-excels.vercel.app/", scene: "excel" },
   { name: "Business",     url: "https://carvex-bussines.vercel.app", scene: "business" },

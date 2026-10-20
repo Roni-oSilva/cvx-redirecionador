@@ -163,7 +163,7 @@
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.style.setProperty("--i", i);
-      const [c1, c2] = palette[i % palette.length];
+      const [c1, c2] = link.color || palette[i % palette.length];
       a.style.setProperty("--c1", c1);
       a.style.setProperty("--c2", c2);
       if (link.scene) {
