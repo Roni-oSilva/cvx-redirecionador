@@ -131,3 +131,39 @@ WhatsApp: https://wa.me/5591981902529?text=Ol%C3%A1%2C%20Carvex!%20Vi%20o%20an%C
 ## Dica de segmentação
 
 O criativo **Kits** funciona melhor quando o público é de um segmento só. Crie um conjunto de anúncios por tipo de negócio (por exemplo, só interesses de restaurante) e troque o título por "Um kit para o seu restaurante". Fica mais específico e tende a converter melhor.
+
+---
+
+# Site Oficial, Excels e Hotmart
+
+Cada criativo vem em 1:1, 4:5 e 9:16, com o mesmo padrão: `oficial-…`, `excels-…`, `hotmart-…` (por exemplo `excels-feed-4x5.png`). O Site Oficial usa o violeta do site novo, o Excels usa o verde e o Hotmart usa o azul da Carvex.
+
+## Site Oficial — "Tecnologia que trabalha por você."
+- **Destino:** `https://carvex-one.vercel.app/?utm_source=meta&utm_medium=paid&utm_campaign=oficial`
+- **Texto principal:** Landing pages, painéis e automações para o seu negócio crescer. A Carvex monta, você cuida do resto. Fale com a gente.
+- **Título:** Tecnologia que trabalha por você
+- **Descrição:** Landing pages, painéis e automações
+- **Botão:** Enviar mensagem
+- **WhatsApp:** https://wa.me/5591981902529?text=Ol%C3%A1%2C%20Carvex!%20Vi%20o%20an%C3%BAncio%20e%20quero%20conhecer%20os%20servi%C3%A7os.
+
+## Excels — "Planilhas que resolvem a dor do seu negócio."
+- **Destino:** `https://carvex-excels.vercel.app/?utm_source=meta&utm_medium=paid&utm_campaign=excels`
+- **Texto principal:** 10 planilhas Excel prontas, com fórmulas, dashboard e tutorial passo a passo. Baixe, abra e comece a usar. Pagamento único, sem mensalidade.
+- **Título:** Planilhas que resolvem a dor do seu negócio
+- **Descrição:** Pagamento único, sem mensalidade
+- **Botão:** Saiba mais (venda direta no site) ou Enviar mensagem
+- **WhatsApp:** https://wa.me/5591981902529?text=Ol%C3%A1%2C%20Carvex!%20Vi%20o%20an%C3%BAncio%20das%20planilhas%20e%20quero%20saber%20mais.
+- Os números de dentro da planilha (42.300, 36.100…) são fictícios, como no exemplo do próprio site.
+
+## Hotmart — "Pare de montar tudo do zero."
+- **Destino:** `https://hotmart-cvx.vercel.app/?utm_source=meta&utm_medium=paid&utm_campaign=hotmart` (a vitrine leva à compra na Hotmart) ou direto na página da Carvex na Hotmart.
+- **Texto principal:** Páginas de venda, painéis de leads e kits de orçamento prontos. Você baixa, edita e usa. Compra segura pela Hotmart.
+- **Título:** Pare de montar tudo do zero
+- **Descrição:** Templates, painéis e kits prontos
+- **Botão:** Saiba mais
+- **WhatsApp:** https://wa.me/5591981902529?text=Ol%C3%A1%2C%20Carvex!%20Vi%20o%20an%C3%BAncio%20dos%20produtos%20na%20Hotmart%20e%20tenho%20uma%20d%C3%BAvida.
+- O criativo cita "a partir de R$ 49" nos kits, que é o preço mostrado hoje no site. **Se o preço mudar, avise para eu atualizar a imagem**, para não anunciar um valor errado.
+- Evite prometer resultado ou venda: o próprio site diz que são ferramentas de organização e apoio.
+
+## Observação sobre venda direta
+Excels e Hotmart são produtos de compra no próprio site. Neles, a campanha de **Tráfego/Vendas para o site** costuma ser melhor que a de Mensagens. Use o WhatsApp só como apoio para dúvidas.
