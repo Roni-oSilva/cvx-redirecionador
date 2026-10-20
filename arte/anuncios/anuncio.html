@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carvex — Anúncio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 100%; height: 100%; }
+body { font-family: "Inter Tight", system-ui, sans-serif; color: #fff; overflow: hidden; position: relative;
+  background: radial-gradient(ellipse at 75% 55%, #1b5cff 0%, #0a2fb8 40%, #040f45 82%, #020726 100%); }
+body.sq { width: 1080px; height: 1080px; --k: .66; --h: 72px; --pt: 56px; --pb: 48px; }
+body.fd { width: 1080px; height: 1350px; --k: .98; --h: 92px; --pt: 64px; --pb: 56px; }
+body.st { width: 1080px; height: 1920px; --k: 1.3; --h: 104px; --pt: 250px; --pb: 320px; }
+.glow { position: absolute; left: -10%; right: -10%; bottom: -6%; height: 32%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(80,150,255,.65), transparent 65%); }
+.wrap { position: relative; height: 100%; padding: var(--pt) 64px var(--pb); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.logo { height: 74px; display: block; }
+.eyebrow { margin-top: 26px; padding: 10px 24px; border-radius: 999px; background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.3); font-size: 24px; font-weight: 700; letter-spacing: .12em; }
+h1 { margin-top: 24px; font-size: var(--h); line-height: 1; font-weight: 800; letter-spacing: -.03em; }
+h1 em { font-style: normal; color: #7cc4ff; }
+.sub { margin-top: 20px; font-size: calc(var(--h) * .36); line-height: 1.28; color: rgba(255,255,255,.88); max-width: 860px; }
+.stagewrap { flex: 1; padding-top: 28px; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.stage { position: relative; width: 800px; height: 560px; transform: scale(var(--k)); flex: none; margin: calc((560px * var(--k) - 560px) / 2) calc((800px * var(--k) - 800px) / 2); }
+.cta { display: inline-flex; align-items: center; gap: 16px; background: #fff; color: #0a2fb8; font-weight: 800; font-size: 38px;
+  padding: 26px 54px; border-radius: 999px; box-shadow: 0 22px 60px -18px rgba(90,170,255,.9), 0 0 0 8px rgba(255,255,255,.14); }
+.cta svg { width: 40px; height: 40px; }
+.foot { margin-top: 22px; font-size: 26px; font-weight: 500; color: rgba(255,255,255,.82); }
+.foot b { font-weight: 700; color: #fff; }
+
+/* vidro */
+.glass { position: absolute; border-radius: 28px; background: linear-gradient(135deg, rgba(40,100,255,.6), rgba(15,50,180,.45));
+  border: 1.5px solid rgba(255,255,255,.38); box-shadow: 0 24px 60px rgba(0,10,90,.55), inset 0 0 20px rgba(255,255,255,.12); }
+.chip { position: absolute; padding: 14px 26px; border-radius: 999px; background: #fff; color: #0a2fb8; font-weight: 800; font-size: 26px;
+  box-shadow: 0 16px 40px rgba(0,10,80,.5); white-space: nowrap; }
+.ic { width: 52px; height: 52px; border-radius: 14px; background: #1a5cff; display: grid; place-items: center; flex: none; box-shadow: 0 8px 20px rgba(20,80,255,.6); }
+.ic svg { width: 28px; height: 28px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* notebook */
+.laptop { position: absolute; left: 150px; top: 40px; width: 560px; height: 350px; transform: rotateY(-9deg) rotateZ(1deg); }
+.screen { width: 100%; height: 100%; border-radius: 20px; background: #0b1230; padding: 12px; box-shadow: 0 0 0 3px #aab6d6, 0 0 80px rgba(60,130,255,.55); }
+.screen .in { width: 100%; height: 100%; border-radius: 9px; background: #fff; color: #0b1230; padding: 34px 32px; position: relative; }
+.in h4 { font-size: 46px; line-height: 1; font-weight: 800; letter-spacing: -.02em; }
+.in h4 span { color: #1a5cff; }
+.in .b { position: absolute; left: 32px; bottom: 28px; background: #1a5cff; color: #fff; font-weight: 700; font-size: 17px; padding: 12px 26px; border-radius: 999px; }
+.base { position: absolute; left: 100px; top: 392px; width: 660px; height: 24px; border-radius: 4px 4px 30px 30px; background: linear-gradient(180deg,#c8d1ea,#6d7aa6); box-shadow: 0 30px 50px rgba(0,10,80,.6); }
+.phone { position: absolute; width: 230px; height: 460px; border-radius: 36px; background: #fff; border: 8px solid #0b1230; box-shadow: 0 0 0 3px #b9c4e2, 0 30px 70px rgba(0,10,90,.7); overflow: hidden; color: #0b1230; }
+.phone::before { content: ""; position: absolute; top: 8px; left: 50%; width: 76px; height: 16px; margin-left: -38px; background: #0b1230; border-radius: 12px; z-index: 2; }
+.phone.bg { background: #0d1b4a; color: #fff; }
+
+/* chat */
+.chat { padding: 40px 14px 14px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.3; }
+.chat .hd { display: flex; align-items: center; gap: 8px; font-weight: 700; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.15); }
+.chat .dot { width: 26px; height: 26px; border-radius: 50%; background: #1a5cff; }
+.bub { padding: 10px 13px; border-radius: 16px; max-width: 88%; }
+.bub.l { background: rgba(255,255,255,.14); border-bottom-left-radius: 4px; }
+.bub.r { background: #1a8cff; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+/* painel */
+.bars { display: flex; align-items: flex-end; gap: 14px; height: 190px; padding: 0 6px; }
+.bars i { flex: 1; border-radius: 10px 10px 0 0; background: linear-gradient(to top, #1a5cff, #7cc4ff); }
+.flow { display: flex; align-items: center; justify-content: space-between; position: relative; height: 70px; }
+.flow::before { content: ""; position: absolute; left: 6%; right: 6%; top: 50%; height: 2px; background: rgba(255,255,255,.35); }
+.flow span { position: relative; width: 60px; height: 60px; border-radius: 18px; background: rgba(255,255,255,.14); border: 1.5px solid rgba(255,255,255,.4); display: grid; place-items: center; }
+.flow span::after { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #7cc4ff; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <img class="logo" src="../../assets/logo.png" alt="Carvex">
+  <div class="eyebrow" id="eyebrow"></div>
+  <h1 id="h1"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="stagewrap"><div class="stage" id="stage"></div></div>
+  <div class="cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0a2fb8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.3L3 20l1.3-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 9.5c0 3 2.500 5.500 5.500 5.500l1.200-1.500-2-1-.8.8c-1-.4-1.800-1.200-2.200-2.200l.8-.8-1-2z" fill="#0a2fb8" stroke="none"/></svg>
+    <span id="cta">Chamar no WhatsApp</span>
+  </div>
+  <p class="foot"><b>carvex-one.vercel.app</b> &nbsp;·&nbsp; @carvex_lab</p>
+</div>
+
+<script>
+const q = new URLSearchParams(location.search);
+const v = q.get("v") || "site", f = q.get("f") || "sq";
+document.body.classList.add(f);
+
+const ICON = {
+  msg: '<svg viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 012 2v8a2 2 0 01-2 2h-8l-5 4v-4H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>',
+  chart: '<svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>',
+  bot: '<svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg>',
+};
+
+const V = {
+  site: {
+    eyebrow: "SITE QUE VENDE",
+    h1: 'Seu site trabalhando <em>por você</em> 24h.',
+    sub: "Landing pages sob medida que viram conversa no WhatsApp.",
+    cta: "Pedir meu site",
+    stage: `
+      <div class="laptop"><div class="screen"><div class="in"><h4>Seu negócio<br>vendendo <span>online</span></h4><div class="b">CHAMAR NO WHATSAPP</div></div></div></div>
+      <div class="base"></div>
+      <div class="phone" style="left:40px;top:120px;transform:rotate(-4deg)"><div style="padding:34px 14px 0"><div style="background:#0b3fd8;border-radius:12px;height:86px;margin-bottom:12px"></div><div style="font-weight:800;font-size:21px;line-height:1.05">Soluções que <span style="color:#1a5cff">aceleram</span> seu negócio</div><div style="margin-top:12px;height:10px;width:80%;border-radius:6px;background:#dbe3f6"></div><div style="margin-top:8px;height:10px;width:60%;border-radius:6px;background:#dbe3f6"></div><div style="margin-top:18px;background:#1a5cff;color:#fff;font-weight:700;border-radius:999px;padding:11px;text-align:center;font-size:15px">Falar no WhatsApp</div></div></div>
+      <div class="glass" style="right:0;top:0;width:300px;padding:18px 20px;display:flex;gap:14px;align-items:center;transform:rotate(3deg)"><div class="ic">${ICON.msg}</div><div><div style="font-weight:800;font-size:22px">Cliente novo</div><div style="font-size:17px;opacity:.85">Quero um orçamento!</div></div></div>
+      <div class="chip" style="right:10px;bottom:30px;transform:rotate(-3deg)">Rápido no celular</div>`,
+  },
+  robo: {
+    eyebrow: "ROBÔS DE WHATSAPP",
+    h1: 'Seu WhatsApp <em>vendendo</em> sozinho.',
+    sub: "Robôs que atendem, agendam e cobram seus clientes, a qualquer hora.",
+    cta: "Quero meu robô",
+    stage: `
+      <div class="phone bg" style="left:285px;top:20px;width:260px;height:500px"><div class="chat"><div class="hd"><span class="dot"></span>Carvex Bot</div>
+        <div class="bub r">Oi! Quero agendar um horário</div>
+        <div class="bub l">Claro! Tenho amanhã às 10h ou 15h. Qual prefere?</div>
+        <div class="bub r">10h</div>
+        <div class="bub l">Confirmado ✅ Te lembro um dia antes.</div></div></div>
+      <div class="chip" style="left:20px;top:70px;transform:rotate(-6deg)">Agenda 24h</div>
+      <div class="chip" style="right:10px;top:150px;transform:rotate(5deg)">Cobrança educada</div>
+      <div class="chip" style="left:0;bottom:90px;transform:rotate(3deg)">Pedidos sem comissão</div>
+      <div class="chip" style="right:40px;bottom:50px;transform:rotate(-4deg)">Lembretes</div>`,
+  },
+  painel: {
+    eyebrow: "PAINÉIS E AUTOMAÇÃO",
+    h1: 'Chega de refazer <em>relatório</em> à mão.',
+    sub: "O número certo na hora e o trabalho repetitivo rodando sozinho.",
+    cta: "Quero automatizar",
+    stage: `
+      <div class="glass" style="left:60px;top:30px;width:480px;padding:26px"><div style="font-size:19px;font-weight:700;opacity:.7;margin-bottom:14px;letter-spacing:.08em">PAINEL</div>
+        <div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i style="height:94%"></i></div></div>
+      <div class="glass" style="right:20px;bottom:40px;width:430px;padding:24px 26px"><div style="font-size:19px;font-weight:700;opacity:.7;margin-bottom:10px;letter-spacing:.08em">AUTOMAÇÃO</div><div class="flow"><span></span><span></span><span></span></div></div>
+      <div class="glass" style="right:0;top:0;padding:16px 22px;display:flex;gap:14px;align-items:center;transform:rotate(3deg)"><div class="ic">${ICON.chart}</div><div style="font-weight:800;font-size:23px">Relatório pronto</div></div>
+      <div class="chip" style="left:0;bottom:70px;transform:rotate(-4deg)">Sem planilha travada</div>`,
+  },
+};
+const d = V[v];
+document.getElementById("eyebrow").textContent = d.eyebrow;
+document.getElementById("h1").innerHTML = d.h1;
+document.getElementById("sub").textContent = d.sub;
+document.getElementById("cta").textContent = d.cta;
+document.getElementById("stage").innerHTML = d.stage;
+</script>
+</body>
+</html>
