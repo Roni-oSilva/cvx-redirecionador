@@ -84,6 +84,7 @@ const root = document.getElementById("root");
 const ACC = { blue:["#1a5cff","#7cc4ff","#0a2fb8","#eaf1ff"], gold:["#b8860b","#f5d77a","#5c3d00","#fff6dc"], green:["#16a34a","#86efac","#065f2e","#e6f8ee"] }[R.theme];
 [ "--a","--aL","--aD","--tint" ].forEach((k,i)=>root.style.setProperty(k, ACC[i]));
 
+const EV=[]; const ev=(t,k,g=1)=>EV.push([Math.round(t*1000)/1000,k,g]);
 const E = (tag, cls, html, st) => { const e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; if(st) Object.assign(e.style, st); return e; };
 const anim = (el, name, dur, delay, extra="") => { el.style.animation = `${name} ${dur}s ${extra||"cubic-bezier(.22,1,.36,1)"} ${delay}s both`; return el; };
 const words = (text, cls, t0, step=0.09) => { // *x* = destaque
@@ -91,7 +92,7 @@ const words = (text, cls, t0, step=0.09) => { // *x* = destaque
   let i=0;
   text.split(/(\*[^*]+\*)/).filter(Boolean).forEach(part=>{
     const hi = part.startsWith("*"); const txt = hi?part.slice(1,-1):part;
-    txt.split(" ").filter(Boolean).forEach(w=>{ const s=E("span","w"+(hi?" a":""),w); anim(s,"rise",.7,t0+i*step); l.appendChild(s); i++; });
+    txt.split(" ").filter(Boolean).forEach(w=>{ const s=E("span","w"+(hi?" a":""),w); anim(s,"rise",.7,t0+i*step); ev(t0+i*step+.12,"tick",.55); l.appendChild(s); i++; });
   });
   return l;
 };
@@ -111,35 +112,36 @@ function visual(v, t0) {
   const box = E("div","vis card");
   if (v==="bars") {
     box.appendChild(E("div","lbl","PAINEL"));
-    const b=E("div","bars"); [38,60,46,82,64,94].forEach((h,i)=>{ const x=E("i","",""); x.style.height=h+"%"; anim(x,"growY",.8,t0+.2+i*.12); b.appendChild(x); }); box.appendChild(b);
+    const b=E("div","bars"); [38,60,46,82,64,94].forEach((h,i)=>{ const x=E("i","",""); x.style.height=h+"%"; anim(x,"growY",.8,t0+.2+i*.12); ev(t0+.4+i*.12,"blip",.5); b.appendChild(x); }); box.appendChild(b);
   } else if (v==="chat") {
     const c=E("div","chat");
-    [["l","Oi! Quero agendar um horário"],["r","Claro! Tenho 10h ou 15h. Qual prefere?"],["l","10h"],["r","Confirmado ✅ Te lembro um dia antes."]].forEach(([s,t],i)=>{ const b=E("div","bub "+(i%2?"r":"l"),t); if(i%2===0){b.className="bub r";} else {b.className="bub l";} anim(b,"rise",.6,t0+.3+i*.75); c.appendChild(b); });
+    [["l","Oi! Quero agendar um horário"],["r","Claro! Tenho 10h ou 15h. Qual prefere?"],["l","10h"],["r","Confirmado ✅ Te lembro um dia antes."]].forEach(([s,t],i)=>{ const b=E("div","bub "+(i%2?"r":"l"),t); if(i%2===0){b.className="bub r";} else {b.className="bub l";} anim(b,"rise",.6,t0+.3+i*.75); ev(t0+.35+i*.75,"msg",i%2?1:.8); c.appendChild(b); });
     c.children[0].className="bub r"; c.children[1].className="bub l"; c.children[2].className="bub r"; c.children[3].className="bub l";
     box.appendChild(c);
   } else if (v==="flow") {
-    const f=E("div","flow"); ["1","2","3"].forEach((n,i)=>{ const d=E("div","nd",n); anim(d,"pop",.6,t0+.2+i*.35); f.appendChild(d); });
-    const dot=E("div","dot"); dot.style.animation=`travel 1.8s ease-in-out ${t0+.9}s both`; f.appendChild(dot); box.appendChild(f);
+    const f=E("div","flow"); ["1","2","3"].forEach((n,i)=>{ const d=E("div","nd",n); anim(d,"pop",.6,t0+.2+i*.35); ev(t0+.25+i*.35,"pop",.7); f.appendChild(d); });
+    const dot=E("div","dot"); dot.style.animation=`travel 1.8s ease-in-out ${t0+.9}s both`; ev(t0+.95,"whoosh",.45); f.appendChild(dot); box.appendChild(f);
   } else if (v==="page") {
     const p=E("div","page"); p.innerHTML='<div class="hd"><i></i><i></i><i></i></div>';
-    const h=E("div","hero"); anim(h,"rise",.7,t0+.2); p.appendChild(h);
+    const h=E("div","hero"); anim(h,"rise",.7,t0+.2); ev(t0+.25,"blip",.6); p.appendChild(h);
     [90,70,48].forEach((w,i)=>{ const l=E("div","ln"); l.style.width=w+"%"; anim(l,"rise",.6,t0+.6+i*.2); p.appendChild(l); });
-    const bt=E("div","btn","Falar no WhatsApp"); anim(bt,"pop",.6,t0+1.5); p.appendChild(bt); box.appendChild(p);
+    const bt=E("div","btn","Falar no WhatsApp"); anim(bt,"pop",.6,t0+1.5); ev(t0+1.55,"pop",.8); p.appendChild(bt); box.appendChild(p);
   } else if (v==="sheet") {
     const s=E("div","sheet"); s.innerHTML='<table><tr><th>Mês</th><th>Entradas</th><th>Saídas</th><th>Saldo</th></tr></table>';
     const t=s.querySelector("table");
-    [["Jan","42.300","36.100","6.200"],["Fev","38.900","35.400","3.500"],["Mar","51.200","41.900","9.300"]].forEach((r,i)=>{ const tr=document.createElement("tr"); tr.innerHTML=`<td>${r[0]}</td><td class="y">${r[1]}</td><td class="y">${r[2]}</td><td class="g">${r[3]}</td>`; anim(tr,"rise",.6,t0+.3+i*.4); t.appendChild(tr); });
+    [["Jan","42.300","36.100","6.200"],["Fev","38.900","35.400","3.500"],["Mar","51.200","41.900","9.300"]].forEach((r,i)=>{ const tr=document.createElement("tr"); tr.innerHTML=`<td>${r[0]}</td><td class="y">${r[1]}</td><td class="y">${r[2]}</td><td class="g">${r[3]}</td>`; anim(tr,"rise",.6,t0+.3+i*.4); ev(t0+.35+i*.4,"blip",.55); t.appendChild(tr); });
     box.appendChild(s); box.style.overflow="hidden";
   } else if (v==="products") {
     box.className="vis"; box.style.width="860px";
-    [["site","Templates de página","Prontos para editar"],["chart","Painéis de leads","No Excel, por nicho"],["kit","Kits de orçamento","Preço, proposta e contrato"]].forEach(([ic,t,s],i)=>{ const r=E("div","prow card",`<i><svg viewBox="0 0 24 24">${ICON[ic]}</svg></i><div><b>${t}</b><span>${s}</span></div>`); anim(r,"rise",.7,t0+.3+i*.5); box.appendChild(r); });
+    [["site","Templates de página","Prontos para editar"],["chart","Painéis de leads","No Excel, por nicho"],["kit","Kits de orçamento","Preço, proposta e contrato"]].forEach(([ic,t,s],i)=>{ const r=E("div","prow card",`<i><svg viewBox="0 0 24 24">${ICON[ic]}</svg></i><div><b>${t}</b><span>${s}</span></div>`); anim(r,"rise",.7,t0+.3+i*.5); ev(t0+.35+i*.5,"blip",.6); box.appendChild(r); });
   }
   return box;
 }
 
 function build() {
   let t = 0;
-  R.scenes.forEach(S => {
+  R.scenes.forEach((S,si) => {
+    ev(t, si===0?"impact":"whoosh", si===0?.8:1);
     const sc = E("div","scene "+(S.type==="hook"?"dark":S.type==="cta"?"cta":"light"));
     const safe = E("div","safe"); sc.appendChild(safe);
     const L=0.25;
@@ -147,7 +149,7 @@ function build() {
     if (S.type==="hook") {
       rings(sc,t,2); S.lines.forEach((ln,i)=>safe.appendChild(words(ln,"",t+.25+i*.55)));
       if (S.sub){ const s=E("div","sub",S.sub); anim(s,"rise",.7,t+1.6); safe.appendChild(s); }
-      sc.style.animation += ""; 
+      ev(t+S.dur-1.0,"riser",.8);
     } else if (S.type==="text") {
       rings(sc,t,S.rings??2);
       S.lines.forEach((ln,i)=>safe.appendChild(words(ln,S.size||"",t+.2+i*.5)));
@@ -155,25 +157,25 @@ function build() {
       if (S.sub){ const s=E("div","sub",S.sub); anim(s,"rise",.7,t+.9+S.lines.length*.45); safe.appendChild(s); }
     } else if (S.type==="logo") {
       rings(sc,t,3);
-      const lg=E("img","logo"); lg.src="logo-blue.png"; anim(lg,"pop",.8,t+.2); safe.appendChild(lg);
+      const lg=E("img","logo"); lg.src="logo-blue.png"; anim(lg,"pop",.8,t+.2); ev(t+.2,"impact",.9); ev(t+.85,"shine",.7); safe.appendChild(lg);
       const tg=E("div","tagline",S.tag||"Technology, refined."); anim(tg,"rise",.7,t+.8); safe.appendChild(tg);
     } else if (S.type==="beat") {
       const f=E("div","ring f"); f.style.setProperty("--d","1100px"); anim(f,"fillIn",1,t); sc.appendChild(f);
-      if (S.icon){ const ic=E("div","icon",`<svg viewBox="0 0 24 24">${ICON[S.icon]}</svg>`); anim(ic,"pop",.7,t+.15); safe.appendChild(ic); }
+      if (S.icon){ const ic=E("div","icon",`<svg viewBox="0 0 24 24">${ICON[S.icon]}</svg>`); anim(ic,"pop",.7,t+.15); ev(t+.15,"pop",.9); safe.appendChild(ic); }
       safe.appendChild(words(S.title,"",t+.35,.1));
       if (S.sub){ const s=E("div","sub",S.sub); anim(s,"rise",.7,t+.9); safe.appendChild(s); }
       if (S.visual) safe.appendChild(visual(S.visual,t+.8));
-      if (S.chips){ const c=E("div","chips"); S.chips.forEach((x,i)=>{ const ch=E("div","chip",x); anim(ch,"pop",.5,t+.9+i*.18); c.appendChild(ch); }); safe.appendChild(c); }
+      if (S.chips){ const c=E("div","chips"); S.chips.forEach((x,i)=>{ const ch=E("div","chip",x); anim(ch,"pop",.5,t+.9+i*.18); ev(t+.9+i*.18,"pop",.7); c.appendChild(ch); }); safe.appendChild(c); }
     } else if (S.type==="cta") {
       rings(sc,t,3);
       const h=words(S.title,"",t+.2); safe.appendChild(h);
       if (S.sub){ const s=E("div","sub",S.sub); anim(s,"rise",.7,t+1); safe.appendChild(s); }
-      const p=E("div","pill",S.button||"Chamar no WhatsApp"); anim(p,"pop",.7,t+1.4); p.style.animation += `, pulse 1.4s ease-in-out ${t+2.2}s infinite`; safe.appendChild(p);
+      const p=E("div","pill",S.button||"Chamar no WhatsApp"); anim(p,"pop",.7,t+1.4); ev(t+1.4,"ding",1); ev(t+1.4,"pop",.8); p.style.animation += `, pulse 1.4s ease-in-out ${t+2.2}s infinite`; safe.appendChild(p);
       [ "(91) 98190-2529", "@carvex_lab", S.url ].filter(Boolean).forEach((x,i)=>{ const r=E("div","row2",x); anim(r,"rise",.6,t+1.9+i*.25); safe.appendChild(r); });
     }
     root.appendChild(sc); t += S.dur;
   });
-  window.TOTAL = t;
+  window.TOTAL = t; window.EV = EV;
 }
 build();
 window.seek = (sec) => { document.getAnimations().forEach(a => { a.pause(); a.currentTime = sec*1000; }); };
