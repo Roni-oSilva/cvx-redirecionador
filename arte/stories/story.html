@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carvex — Stories da semana</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; }
+body { width:1080px; height:1920px; overflow:hidden; position:relative; font-family:"Inter Tight",system-ui,sans-serif; color:#fff;
+  background: radial-gradient(ellipse at 72% 46%, var(--c1) 0%, var(--c2) 46%, var(--c3) 100%); }
+body.blue  { --c1:#1b5cff; --c2:#0a2fb8; --c3:#020726; --acc:#7cc4ff; --ink:#0a2fb8; --b1:#1a5cff; --b2:#7cc4ff; }
+body.gold  { --c1:#a67c00; --c2:#4a3500; --c3:#120d02; --acc:#f5d77a; --ink:#5c3d00; --b1:#d4a017; --b2:#f5d77a; }
+body.green { --c1:#0f7a3e; --c2:#06351c; --c3:#02120a; --acc:#6ee7a0; --ink:#065f2e; --b1:#16a34a; --b2:#86efac; }
+.wrap { height:100%; padding:250px 64px 340px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.logo { height:74px; }
+.day { margin-top:30px; padding:10px 26px; border-radius:999px; background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.32); font-size:25px; font-weight:700; letter-spacing:.14em; }
+h1 { margin-top:26px; font-size:100px; line-height:1; font-weight:800; letter-spacing:-.03em; }
+h1 em { font-style:normal; color:var(--acc); }
+.sub { margin-top:22px; font-size:38px; line-height:1.28; color:rgba(255,255,255,.88); max-width:880px; }
+.stage { flex:1; width:100%; display:flex; align-items:center; justify-content:center; min-height:0; }
+.stage > div { width:100%; position:relative; }
+.cta { margin-top:10px; padding:22px 48px; border-radius:999px; background:#fff; color:var(--ink); font-size:36px; font-weight:800; box-shadow:0 22px 60px -18px rgba(0,0,0,.5), 0 0 0 8px rgba(255,255,255,.14); }
+.handle { margin-top:20px; font-size:28px; font-weight:600; color:rgba(255,255,255,.85); }
+
+.glass { border-radius:30px; background:linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.07)); border:1.5px solid rgba(255,255,255,.36); box-shadow:0 24px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.22); }
+.row { display:flex; align-items:center; gap:22px; padding:24px 28px; text-align:left; margin-bottom:22px; }
+.row i { width:78px; height:78px; border-radius:22px; background:#fff; display:grid; place-items:center; flex:none; }
+.row i svg { width:42px; height:42px; fill:none; stroke:var(--ink); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.row b { display:block; font-size:38px; font-weight:800; line-height:1.05; }
+.row span { display:block; margin-top:6px; font-size:26px; color:rgba(255,255,255,.82); }
+.chips { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; }
+.chip { padding:18px 34px; border-radius:999px; background:#fff; color:var(--ink); font-weight:800; font-size:34px; box-shadow:0 14px 36px rgba(0,0,0,.4); }
+.bars { display:flex; align-items:flex-end; gap:16px; height:300px; padding:28px 30px 0; }
+.bars i { flex:1; border-radius:12px 12px 0 0; background:linear-gradient(to top, var(--b1), var(--b2)); }
+.lbl { font-size:24px; font-weight:700; opacity:.7; letter-spacing:.1em; padding:26px 30px 0; text-align:left; }
+.phone { margin:0 auto; width:430px; height:560px; border-radius:50px; background:#0d1b4a; border:10px solid #0b1230; box-shadow:0 0 0 4px #b9c4e2, 0 30px 70px rgba(0,0,0,.6); padding:50px 22px 20px; display:flex; flex-direction:column; gap:14px; font-size:25px; line-height:1.3; text-align:left; }
+.phone .hd { display:flex; align-items:center; gap:12px; font-weight:700; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.15); font-size:26px; }
+.phone .dot { width:38px; height:38px; border-radius:50%; background:#1a5cff; }
+.bub { padding:14px 18px; border-radius:22px; max-width:90%; }
+.bub.l { background:rgba(255,255,255,.14); border-bottom-left-radius:6px; }
+.bub.r { background:#1a8cff; align-self:flex-end; border-bottom-right-radius:6px; }
+.xl { margin:0 auto; width:860px; border-radius:26px; background:#06150e; border:1.5px solid rgba(255,255,255,.25); box-shadow:0 30px 70px rgba(0,0,0,.6); overflow:hidden; }
+.xl .bar { padding:16px 22px; background:#0b2a1b; font-size:22px; font-weight:700; }
+.xl table { width:100%; border-collapse:collapse; font-size:30px; }
+.xl th { background:#0f3d26; padding:16px; text-align:left; font-size:24px; color:#b7f7d1; }
+.xl td { padding:16px; border-top:1px solid rgba(255,255,255,.08); color:#d9fbe7; }
+.xl td.y { background:#facc15; color:#3f2f00; font-weight:700; }
+.xl td.g { background:#14532d; color:#b7f7d1; font-weight:700; }
+.slot { height:150px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="../../assets/logo.png" alt="Carvex">
+  <div class="day" id="day"></div>
+  <h1 id="h1"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="stage"><div id="stage"></div></div>
+  <div class="cta" id="cta"></div>
+  <div class="handle">@carvex_lab</div>
+</div>
+<script>
+const d = parseInt(new URLSearchParams(location.search).get("d") || "1", 10);
+const SV = {
+  site:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8"/></svg>',
+  bot:'<svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01"/></svg>',
+  chart:'<svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>',
+  doc:'<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h7"/></svg>',
+};
+const row = (ic,t,s)=>`<div class="glass row"><i>${SV[ic]}</i><div><b>${t}</b><span>${s}</span></div></div>`;
+const chips = a => `<div class="chips">${a.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`;
+const bars = `<div class="glass"><div class="lbl">PAINEL</div><div class="bars"><i style="height:38%"></i><i style="height:60%"></i><i style="height:46%"></i><i style="height:82%"></i><i style="height:64%"></i><i style="height:94%"></i></div></div>`;
+const slot = `<div class="slot"></div>`;
+
+const D = {
+ 1: { th:"gold", day:"SEGUNDA", h1:'Tecnologia que trabalha <em>por você.</em>', sub:"Sites, robôs e painéis para o seu negócio crescer.",
+      stage: row("site","Sites e landing pages","Sua vitrine trabalhando 24h") + row("bot","Robôs de WhatsApp","Atendem, agendam e cobram") + row("chart","Painéis e automação","O número certo, na hora"), cta:"Toque no link e conheça" },
+ 2: { th:"blue", day:"TERÇA", h1:'Ainda refazendo <em>relatório</em> à mão?', sub:"Existe um jeito mais simples.",
+      stage: bars + `<div class="chips" style="margin-top:26px"><span class="chip">Sem planilha travada</span><span class="chip">Painel pronto</span></div>`, cta:"Responda: já passou por isso?" },
+ 3: { th:"blue", day:"QUARTA", h1:'Seu WhatsApp <em>vendendo</em> sozinho.', sub:"Robôs que atendem, agendam e cobram a qualquer hora.",
+      stage:`<div class="phone"><div class="hd"><span class="dot"></span>Carvex Bot</div><div class="bub r">Oi! Quero agendar um horário</div><div class="bub l">Claro! Tenho amanhã às 10h ou 15h. Qual prefere?</div><div class="bub r">10h</div><div class="bub l">Confirmado ✅ Te lembro um dia antes.</div></div>`, cta:"Chama no WhatsApp" },
+ 4: { th:"green", day:"QUINTA", h1:'10 planilhas <em>prontas</em> para usar.', sub:"Fórmulas, dashboard e tutorial. Pagamento único.",
+      stage:`<div class="xl"><div class="bar">Fluxo-de-Caixa.xlsx — Excel</div><table><tr><th>Mês</th><th>Entradas</th><th>Saídas</th><th>Saldo</th></tr><tr><td>Jan</td><td class="y">42.300</td><td class="y">36.100</td><td class="g">6.200</td></tr><tr><td>Fev</td><td class="y">38.900</td><td class="y">35.400</td><td class="g">3.500</td></tr><tr><td>Mar</td><td class="y">51.200</td><td class="y">41.900</td><td class="g">9.300</td></tr></table><div class="bars" style="height:190px;background:#06150e"><i style="height:45%"></i><i style="height:30%"></i><i style="height:80%"></i><i style="height:62%"></i><i style="height:92%"></i></div></div>`, cta:"Link na bio" },
+ 5: { th:"blue", day:"SEXTA", h1:'Um kit para o <em>seu</em> negócio.', sub:"Qual é o seu segmento?",
+      stage: chips(["Restaurantes","Clínicas","Lojas","Salões e Barbearias","Oficinas","Academias","Imobiliárias","Escritórios"]), cta:"Toque no link e escolha" },
+ 6: { th:"blue", day:"SÁBADO", h1:'Pare de montar tudo <em>do zero.</em>', sub:"Templates, painéis e kits prontos. Baixe, edite e use.",
+      stage: row("site","Templates de página","5 modelos prontos para editar") + row("chart","Painéis de leads","10 nichos, no Excel") + row("doc","Kits de orçamento","Planilhas e modelos"), cta:"Link na bio" },
+ 7: { th:"blue", day:"DOMINGO", h1:'O que mais <em>trava</em> o seu negócio?', sub:"Me conta aqui nos stories.",
+      stage: chips(["Atender cliente","Relatórios","Agenda","Aparecer online","Cobrança"]), cta:"Responda a caixinha" },
+};
+const x = D[d];
+document.body.classList.add(x.th);
+document.getElementById("day").textContent = x.day;
+document.getElementById("h1").innerHTML = x.h1;
+document.getElementById("sub").textContent = x.sub;
+document.getElementById("stage").innerHTML = x.stage;
+document.getElementById("cta").textContent = x.cta;
+</script>
+</body>
+</html>
